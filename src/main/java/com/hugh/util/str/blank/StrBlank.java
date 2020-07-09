@@ -38,8 +38,7 @@ public class StrBlank {
 
     public static Date nightMill(String hourminsecStr) throws ParseException {
         Date date = DateUtils.parseDateStrictly(hourminsecStr, "HH:mm:ss");
-        Calendar calendar = DateUtils.toCalendar(date, TimeZone.getTimeZone("GMT+:00:00"));
-        return calendar.getTime();
+        return date;
     }
 
 }

@@ -12,7 +12,10 @@ import static org.apache.commons.lang3.ArrayUtils.EMPTY_INT_ARRAY;
  **/
 public class demo {
     public static void main(String[] args) {
-        List<Class<?>> classes = ClassUtils.convertClassNamesToClasses(Arrays.asList("java.lang.Integer", "java.lang.int"));
-        System.out.println(classes);
+
+        String str = "abc";
+        StringBuilder strbu = new StringBuilder("def");
+        boolean boo = true;
+        CharSequence cs = boo?str:strbu;
     }
 }
