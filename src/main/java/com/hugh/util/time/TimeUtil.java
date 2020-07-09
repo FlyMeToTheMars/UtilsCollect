@@ -65,7 +65,7 @@ public class TimeUtil {
         locale = Locale.ENGLISH;
         shortDf = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM, locale);
         shortDf.setTimeZone(TimeZone.getTimeZone("Europe/London"));
-        System.out.println(TimeZone.getDefault().getID());
+        System.out.println(TimeZone.getTimeZone("Europe/London").getID());
         System.out.println("英国当前日期时间："+shortDf.format(date));
     }
 }
