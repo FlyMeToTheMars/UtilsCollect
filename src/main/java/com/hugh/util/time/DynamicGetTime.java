@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import com.hugh.util.str.blank.StrBlank;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,12 +87,14 @@ public class DynamicGetTime {
         Date nightStartDateFull = DateUtils.parseDate(nightStartTimeFull, format);
         Date nightEndDateFull = DateUtils.parseDate(nightEndTimeFull, format);
 
-        // 大于0的时候 是查询的时间比规定的夜晚时间晚，需要单独计算
-        if(dateCompare(nightStartDateFull, startTime) >= 0){
-            //已经确定
-            
-        }
+        int days = TimeUtil.differentDays(nightStartDateFull, nightEndDateFull);
 
+        
+
+        // dateCompare大于等于0的时候 是查询的时间比规定的夜晚时间晚，需要单独计算
+        if(dateCompare(nightStartDateFull, startTime) >= 0){
+
+        }
         return hashMap;
     }
 
