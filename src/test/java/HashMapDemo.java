@@ -12,8 +12,10 @@ public class HashMapDemo {
         hashmap.put(2,"wade");
         hashmap.put(3,"james");
         hashmap.put(4,"curry");
+        hashmap.put(1,"notgogo");
         for(int key: hashmap.keySet()){
-            System.out.println("key: "+ key + "; value: " + hashmap.get(key));
+//            System.out.println("key: "+ key + "; value: " + hashmap.get(key));
+            System.out.println(key + hashmap.get(key));
         }
     }
 }

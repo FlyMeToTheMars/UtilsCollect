@@ -76,20 +76,43 @@ public class DynamicGetTime {
         return DateFormat.getDateInstance().format(date) + " ";
     }
 
-
     public static HashMap<Date, Date> initDate(Date startTime, Date endTime, String nightStartTime, String nightEndTime) throws ParseException {
         HashMap<Date, Date> hashMap= new HashMap<Date, Date>();
 
-        String nightStartTimeFull = date2DayStr(startTime) + nightStartTime;
-        String nightEndTimeFull = date2DayStr(endTime) + nightEndTime;
+        /**
+         * 一共四个时间节点 分别对应
+         *
+         * */
+        // 第一天的夜晚开始时间
+        String nightStartTimePrevious = date2DayStr(startTime) + nightStartTime;
+
+        // 第一天凌晨夜晚结束的时间
+        String nightPreviousNext =  date2DayStr(startTime) + nightEndTime;
+
+        // 最后一天的夜晚结束时间
+        String nightEndTimeNext = date2DayStr(endTime) + nightEndTime;
+
+        // 倒数第二天的
+        String nightEndTimePrevious = date2DayStr(endTime) + nightStartTime;
+
         String format = "yyyy-MM-dd HH:mm:ss";
 
-        Date nightStartDateFull = DateUtils.parseDate(nightStartTimeFull, format);
-        Date nightEndDateFull = DateUtils.parseDate(nightEndTimeFull, format);
+        Date nightStartDateFull = DateUtils.parseDate(nightStartTimePrevious, format);
+        Date nightEndDateFull = DateUtils.parseDate(nightEndTimePrevious, format);
 
         int days = TimeUtil.differentDays(nightStartDateFull, nightEndDateFull);
 
-        
+        Date nightStartEveryDay = nightStartDateFull;
+        Date nightEndEveryDay = nightEndDateFull;
+
+        for (int i = 1; i <= days; i++){
+            hashMap.put(nightStartEveryDay, nightEndEveryDay);
+            nightStartEveryDay = DateUtils.addDays(nightStartEveryDay, 1);
+            nightEndEveryDay = DateUtils.addDays(nightEndEveryDay, 1);
+        }
+
+
+
 
         // dateCompare大于等于0的时候 是查询的时间比规定的夜晚时间晚，需要单独计算
         if(dateCompare(nightStartDateFull, startTime) >= 0){
