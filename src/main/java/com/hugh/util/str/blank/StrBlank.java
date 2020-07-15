@@ -32,7 +32,6 @@ public class StrBlank {
         String format = DateFormatUtils.format(nightMill, "yyyy-MM-dd HH:mm:ss");
         System.out.println(format);
         System.out.println(nightMill.getTime());
-
     }
 
 
