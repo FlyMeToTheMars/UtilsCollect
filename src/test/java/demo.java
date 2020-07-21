@@ -21,8 +21,6 @@ public class demo {
         boolean boo = true;
         CharSequence cs = boo?str:strbu;
 
-
-
         Date date = new Date();
         Date datebefore = DateUtils.addMonths(date, -1);
         int i = TimeUtil.differentDays(datebefore, date);
